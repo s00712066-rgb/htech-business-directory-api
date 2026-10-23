@@ -93,6 +93,17 @@ app.post("/api/auth", async (req,res) => {
 	}
 });
 
+app.post("/api/logout", (req,res) => {
+	req.session.destroy( (err) => {
+		if (err){
+			return res.status(500).json({message:"Logout Failed"});
+			console.err(err);
+		}
+		res.clearCookie("connect.sid");
+		return res.status(200).json({message:"Logged out"});
+	});
+});
+
 async function startServer(){
   try{
     let db = await connectDB();
