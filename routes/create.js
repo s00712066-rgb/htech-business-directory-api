@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const {validate} = require('../validation.js');
+
+const requireAdmin = require("../middleware/auth.js");
   
- router.post('/api/business', async (req,res) => {
+ router.post('/api/business', requireAdmin, async (req,res) => {
   const error = validate(req.body);
   
   if (error){
@@ -16,6 +18,8 @@ const {validate} = require('../validation.js');
       category: req.body.category,
       description: req.body.description,
       phone: req.body.phone,
+      whatsapp:req.body.whatsapp,
+      email:req.body.email,
       address: req.body.address,
       city: req.body.city,
       createdAt: new Date()

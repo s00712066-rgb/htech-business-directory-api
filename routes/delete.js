@@ -4,7 +4,9 @@ const router = express.Router();
 
 const {ObjectId} = require("mongodb");
 
-router.delete('/api/business/:id', async (req,res) => {
+const requireAdmin = require("../middleware/auth.js");
+
+router.delete('/api/business/:id', requireAdmin, async (req,res) => {
   
   if (!ObjectId.isValid(req.params.id)){
     return res.status(400).json({message:"Invalid business Id"})
