@@ -19,7 +19,6 @@ const requireAdmin = require("../middleware/auth.js");
       description: req.body.description,
       phone: req.body.phone,
       whatsapp:req.body.whatsapp,
-      email:req.body.email,
       address: req.body.address,
       city: req.body.city,
       createdAt: new Date()

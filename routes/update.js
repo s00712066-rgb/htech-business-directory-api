@@ -29,8 +29,7 @@ router.patch('/api/business/:id', requireAdmin, async (req,res) => {
       category,
       description,
       phone,
-      whatsapp,
-      email, 
+      whatsapp, 
       address, 
       city 
       } = req.body;
@@ -42,7 +41,6 @@ router.patch('/api/business/:id', requireAdmin, async (req,res) => {
          description, 
          phone,
          whatsapp,
-         email, 
          address,
          city
         }

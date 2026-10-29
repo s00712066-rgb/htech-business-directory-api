@@ -48,6 +48,27 @@ router.get('/api/business/:id', async (req,res) => {
     }
 });
 
+router.get("/api/recents", async (req,res) => {
+	try{
+		const db = req.app.locals.db;
+
+		const results = await db.collection("businesses").find({})
+		.sort({createdAt: -1})
+		.limit(6)
+		.toArray();
+
+		return res.status(200).json({
+			count: results.length,
+			businesses: results
+		});
+	 }
+	 catch(error){
+	 	console.error("failed to fetch recents", error.message);
+	 	return res.status(500).json({message:"Something went erong"});
+	 } 
+	
+});
+
 router.get("/api/search", async (req, res) => {
   // Get search text 'q', page number, and limit from URL query. e.g. /api/search?q=laptop&page=1&limit=20
   const { q, page = 1, limit = 20 } = req.query;

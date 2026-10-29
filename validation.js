@@ -19,10 +19,6 @@ else if (typeof data.whatsapp !=="string" || data.whatsapp.trim()===""){
 	return "Whatsapp number is invalid"
 }
 
-else if (typeof data.email !=="string" || !data.email.includes("@") || data.email.trim()===""){
-	return "Email is invalid"
-}
-
 else if (typeof data.address !=="string" || data.address.trim()==="") {
     return "Address is invalid"
 }
